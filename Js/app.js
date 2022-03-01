@@ -1,12 +1,29 @@
 // Api load  
 const searchPhone =()=>{
-    document.getElementById('parantDiv').innerHTML="";
-    document.getElementById('phoneDetails').innerHTML="";
+    const error = document.getElementById('error')
     const phoneSearcher = document.getElementById('input-id').value
-    const url = `https://openapi.programming-hero.com/api/phones?search=${phoneSearcher}`
-     fetch(url)
-    .then(response => response.json())
-    .then (data => showDisplay(data.data))
+                //error handler
+        if(  phoneSearcher=="" ){
+           error.innerText="*please type your phone name"
+            document.getElementById('parantDiv').innerHTML="";
+            document.getElementById('phoneDetails').innerHTML="";
+        
+        }else if(phoneSearcher <= 0 || phoneSearcher > 0 ){
+
+            error.innerText="please type your phone name"
+            document.getElementById('parantDiv').innerHTML="";
+            document.getElementById('phoneDetails').innerHTML="";
+        
+        }else{
+            const url = `https://openapi.programming-hero.com/api/phones?search=${phoneSearcher}`
+            fetch(url)
+           .then(response => response.json())
+           .then (data => showDisplay(data.data))
+              
+
+        }
+
+
 
 }
 // Api data show ui 

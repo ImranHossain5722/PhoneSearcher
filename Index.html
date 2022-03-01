@@ -20,14 +20,20 @@
         <div class="input-group mb-3">
             <input id="input-id" type="text" class="form-control" placeholder="type your phone Name" aria-label="Search"
                 aria-describedby="basic-addon2">
+                
             <div class="input-group-append">
                 <button onclick="searchPhone()" class="input-group-text" id="search-btn">Search</button>
-            </div>
-            <div id="spinner" >
-                <img src="image/loader_gif_1.gif" alt="">
-            </div>   
+            </div>     
         </div>
+        <!-- error messages -->
+            <div>
+                <span class=" text-danger fw-bold" id="error" ></span>
 
+           </div> 
+           <!-- spinner -->
+           <div id="spinner" >
+                <img src="image/loader_gif_1.gif" alt="">
+            </div> 
     </section>
 
     <!-- phone details -->
