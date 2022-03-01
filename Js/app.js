@@ -24,7 +24,7 @@ const showDisplay =(sendPhoneData)=>{
       </div>
       `
       mainDiv.appendChild(div)
-      
+    
 
      
     }
@@ -32,31 +32,36 @@ const showDisplay =(sendPhoneData)=>{
 }
 
 // phone details
- const PhoneDetails=(slug) =>{
-    const url = `https://openapi.programming-hero.com/api/phone/${status.slug}`
+ const PhoneDetails=(info) =>{
+    const url = `https://openapi.programming-hero.com/api/phone/${info}`
         fetch(url)
-        .then(response=> response.json())
-        .then(dataLoad =>displayPhone(dataLoad.data.slug))
+        .then(response => response.json())
+        .then(dataLoad =>displayPhone(dataLoad.data))
 
  }
 
 //  show UI phone details
 const displayPhone =(detailsLoad)=>{
 
+
     const phoneDetails=document.getElementById('phoneDetails')
     const div = document.createElement('div')
     div.innerHTML=`
     <div class="shadow rounded-3 border border-success card mt-2 mb-4 " style="width:15rem; ">
-    <img src="${detailsLoad.image}" class="card-img-top img-fluid" alt="...">
+    <img src="${detailsLoad.image}" class="card-img-top w-75" alt="...">
     <div class="card-body">
-    <h5 class="card-title fs-5 fw-bold">Brand Name: ${detailsLoad.brand}</h5>  
-    <h5 class="card-title fs-5 fw-bold"> Phone Name: ${detailsLoad.phone_name}</h5>
+    <h5 class="card-title fs-6 fw-bold">Name: ${detailsLoad.name}</h5>
+    <p class="card-title fs-6 fw-normal">Release Date: ${detailsLoad.releaseDate}</p>
+    <p class="card-title fs-6 fw-normal">Storage: ${detailsLoad.mainFeatures.storage}</p>  
+    <p class="card-title fs-6 fw-normal">Display: ${detailsLoad.mainFeatures.displaySize}</p>
+    <p class="card-title fs-6 fw-normal">Sensors: ${detailsLoad.mainFeatures.sensors}</p>
+    <p class="card-title fs-6 fw-normal">Other Features: ${detailsLoad.others }</p>
+    <p class="card-title fs-6 fw-normal">Release Date: ${detailsLoad.releaseDate}</p>
     </div>
     </div>
     
  `
  phoneDetails.appendChild(div)
- console.log(detailsLoad);
 
 
 }
