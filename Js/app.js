@@ -1,3 +1,4 @@
+// Api load  
 const searchPhone =()=>{
     const phoneSearcher = document.getElementById('input-id').value
     const url = `https://openapi.programming-hero.com/api/phones?search=${phoneSearcher}`
@@ -6,10 +7,13 @@ const searchPhone =()=>{
     .then (data => showDisplay(data.data))
 
 }
+// Api data show ui 
 const showDisplay =(sendPhoneData)=>{
 
     const mainDiv = document.getElementById('parantaDiv')
     const showFirst20Data =sendPhoneData.slice(0,20)
+// spinner function
+    showSpinner('block');
 
     for (const phone of showFirst20Data ){
         const div=document.createElement('div')
@@ -25,11 +29,9 @@ const showDisplay =(sendPhoneData)=>{
       </div>
       `
       mainDiv.appendChild(div)
-    
-
      
     }
-
+    showSpinner('none');   
 }
 
 // phone details
@@ -58,11 +60,17 @@ const displayPhone =(detailsLoad)=>{
     <p class="card-title fs-6 fw-normal">Storage: ${detailsLoad.mainFeatures.storage}</p>  
     <p class="card-title fs-6 fw-normal">Display: ${detailsLoad.mainFeatures.displaySize}</p>
     <p class="card-title fs-6 fw-normal">Sensors: ${detailsLoad.mainFeatures.sensors}</p>
-    <p class="card-title fs-6 fw-normal">Other Features: ${detailsLoad = Object.keys.others}</p>
+    <p class="card-title fs-6 fw-normal">Other Features: ${Object.entries(detailsLoad.others)}</p>
     </div>
     </div>
-    
+     
  `
  phoneDetails.appendChild(div)
+
+}
+
+// spinner function 
+const showSpinner = displayStyle =>{
+document.getElementById('spinner').style.display = displayStyle;
 
 }
