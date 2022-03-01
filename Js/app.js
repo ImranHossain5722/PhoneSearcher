@@ -1,5 +1,7 @@
 // Api load  
 const searchPhone =()=>{
+    document.getElementById('parantDiv').innerHTML="";
+    document.getElementById('phoneDetails').innerHTML="";
     const phoneSearcher = document.getElementById('input-id').value
     const url = `https://openapi.programming-hero.com/api/phones?search=${phoneSearcher}`
      fetch(url)
@@ -9,8 +11,7 @@ const searchPhone =()=>{
 }
 // Api data show ui 
 const showDisplay =(sendPhoneData)=>{
-
-    const mainDiv = document.getElementById('parantaDiv')
+    const mainDiv = document.getElementById('parantDiv')
     const showFirst20Data =sendPhoneData.slice(0,20)
 // spinner function
     showSpinner('block');
@@ -50,7 +51,7 @@ const displayPhone =(detailsLoad)=>{
     console.log(detailsLoad);
     const phoneDetails=document.getElementById('phoneDetails')
     const div = document.createElement('div')
-    div.className='col-12 col-md-4 col-lg-4 '
+    div.className='col-12 col-md-3 col-lg-3'
     div.innerHTML=`
     <div class="shadow rounded-3 border border-success card mt-2 mb-4 " style="width:20rem; ">
     <img src="${detailsLoad.image}" class="card-img-top w-75 ms-2 " alt="...">
@@ -60,17 +61,16 @@ const displayPhone =(detailsLoad)=>{
     <p class="card-title fs-6 fw-normal">Storage: ${detailsLoad.mainFeatures.storage}</p>  
     <p class="card-title fs-6 fw-normal">Display: ${detailsLoad.mainFeatures.displaySize}</p>
     <p class="card-title fs-6 fw-normal">Sensors: ${detailsLoad.mainFeatures.sensors}</p>
-    <p class="card-title fs-6 fw-normal">Other Features: ${Object.entries(detailsLoad.others)}</p>
+    <p class="card-title fs-6 fw-normal">Other Features: ${ Object.entries(detailsLoad.others)}</p>
     </div>
-    </div>
-     
- `
+    </div>`
+    
  phoneDetails.appendChild(div)
 
 }
 
 // spinner function 
-const showSpinner = displayStyle =>{
+const showSpinner = displayStyle => {
 document.getElementById('spinner').style.display = displayStyle;
 
 }
