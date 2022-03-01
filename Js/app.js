@@ -9,8 +9,9 @@ const searchPhone =()=>{
 const showDisplay =(sendPhoneData)=>{
 
     const mainDiv = document.getElementById('parantaDiv')
+    const showFirst20Data =sendPhoneData.slice(0,20)
 
-    for (const phone of sendPhoneData ){
+    for (const phone of showFirst20Data ){
         const div=document.createElement('div')
         div.className =' col-12 col-md-4 col-lg-4 '
         div.innerHTML =`
@@ -18,7 +19,7 @@ const showDisplay =(sendPhoneData)=>{
         <img src="${phone.image}" class="card-img-top img-fluid" alt="...">
         <div class="card-body">
         <h5 class="card-title fs-5 fw-bold">Brand Name: ${phone.brand}</h5>  
-        <h5 class="card-title fs-5 fw-bold"> Phone Name: ${phone.phone_name}</h5>
+        <h5 class="card-title fs-5 fw-bold"> Product Name: ${phone.phone_name}</h5>
         <button href="#" onclick="PhoneDetails('${phone.slug}')" class="btn btn-success ">Phone Details</button>
         </div>
       </div>
@@ -37,31 +38,31 @@ const showDisplay =(sendPhoneData)=>{
         fetch(url)
         .then(response => response.json())
         .then(dataLoad =>displayPhone(dataLoad.data))
+    
 
  }
 
 //  show UI phone details
 const displayPhone =(detailsLoad)=>{
 
-
+    console.log(detailsLoad);
     const phoneDetails=document.getElementById('phoneDetails')
     const div = document.createElement('div')
+    div.className='col-12 col-md-4 col-lg-4 '
     div.innerHTML=`
-    <div class="shadow rounded-3 border border-success card mt-2 mb-4 " style="width:15rem; ">
-    <img src="${detailsLoad.image}" class="card-img-top w-75" alt="...">
+    <div class="shadow rounded-3 border border-success card mt-2 mb-4 " style="width:20rem; ">
+    <img src="${detailsLoad.image}" class="card-img-top w-75 ms-2 " alt="...">
     <div class="card-body">
     <h5 class="card-title fs-6 fw-bold">Name: ${detailsLoad.name}</h5>
     <p class="card-title fs-6 fw-normal">Release Date: ${detailsLoad.releaseDate}</p>
     <p class="card-title fs-6 fw-normal">Storage: ${detailsLoad.mainFeatures.storage}</p>  
     <p class="card-title fs-6 fw-normal">Display: ${detailsLoad.mainFeatures.displaySize}</p>
     <p class="card-title fs-6 fw-normal">Sensors: ${detailsLoad.mainFeatures.sensors}</p>
-    <p class="card-title fs-6 fw-normal">Other Features: ${detailsLoad.others }</p>
-    <p class="card-title fs-6 fw-normal">Release Date: ${detailsLoad.releaseDate}</p>
+    <p class="card-title fs-6 fw-normal">Other Features: ${detailsLoad = Object.keys.others}</p>
     </div>
     </div>
     
  `
  phoneDetails.appendChild(div)
-
 
 }
