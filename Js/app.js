@@ -6,7 +6,10 @@ const searchPhone =()=>{
     const error = document.getElementById('error')
     const phoneSearcher = document.getElementById('input-id').value
                 //error handler
-        if(  phoneSearcher=="" ){
+        if(phoneSearcher.length == 0 || phoneSearcher==""
+            
+             ){
+
            error.innerText="*please type your phone name"
            
         
@@ -17,8 +20,8 @@ const searchPhone =()=>{
             const url = `https://openapi.programming-hero.com/api/phones?search=${phoneSearcher}`
             fetch(url)
            .then(response => response.json())
-           .then (data => showDisplay(data.data))
-
+            .then (data => showDisplay(data.data))
+            //.then(data => console.log(data.data[0]) )
            document.getElementById('input-id').value="";
 
               
@@ -68,8 +71,6 @@ const showDisplay =(sendPhoneData)=>{
 
 //  show UI phone details
 const displayPhone =(detailsLoad)=>{
-
-    console.log(detailsLoad);
     const phoneDetails=document.getElementById('phoneDetails')
     const div = document.createElement('div')
     div.className='col-12 col-md-3 col-lg-3'
