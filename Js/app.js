@@ -27,7 +27,7 @@ const searchPhone = () =>{
 // Api data show ui 
 const showDisplay =(sendPhoneData)=>{
     if(sendPhoneData == 0 ){
-        error.innerText ="SORRY invalid name ! PLEASE Try a valid name"
+        error.innerText ="SORRY invalid ame ! PLEASE Try a valid name"
 
     }else{
 
